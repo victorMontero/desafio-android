@@ -2,6 +2,9 @@
     <string name="app_name">PicPay</string>
     <string name="title">Contatos</string>
     <string name="error">Ocorreu um erro. Tente novamente.</string>
+    <string name="error_network">Falha na rede.</string>
+    <string name="error_internet">Sem conexão com a internet.</string>
+    <string name="error_conversion">Erro de conversão.</string>
     <string name="undo">Desfazer</string>
     <string name="snackbar_favorites_remove">foi removido dos Favoritos</string>
     <string name="snackbar_favorites_add">foi adicionado aos Favoritos</string>

@@ -1,15 +1,14 @@
 package com.picpay.desafio.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.picpay.desafio.adapters.ContactAdapter
 import com.picpay.desafio.android.R
-import com.picpay.desafio.util.Constants.Companion.TAG
 import com.picpay.desafio.util.Resource
 import kotlinx.android.synthetic.main.fragment_contact_list.*
 
@@ -24,10 +23,14 @@ class ContactListFragment : Fragment(R.layout.fragment_contact_list) {
         viewModel = (activity as ContactListActivity).viewModel
         setupRecyclerView()
 
-        contactAdapter.setOnItemClickListener {contact ->
+        contactAdapter.setOnItemClickListener { contact ->
             viewModel.saveContact(contact)
-            Snackbar.make(view, "${contact.username} ${getString(R.string.snackbar_favorites_add)}", Snackbar.LENGTH_SHORT).apply {
-                setAction(getString(R.string.undo)){
+            Snackbar.make(
+                view,
+                "${contact.username} ${getString(R.string.snackbar_favorites_add)}",
+                Snackbar.LENGTH_SHORT
+            ).apply {
+                setAction(getString(R.string.undo)) {
                     viewModel.deleteContact(contact)
                 }
             }.show()
@@ -44,7 +47,11 @@ class ContactListFragment : Fragment(R.layout.fragment_contact_list) {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
-                        Log.e(TAG, "${getString(R.string.error)} $message")
+                        Toast.makeText(
+                            activity,
+                            "${getString(R.string.error)} ",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
                 is Resource.Loading -> {
