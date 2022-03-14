@@ -10,9 +10,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.picpay.desafio.adapters.ContactAdapter
 import com.picpay.desafio.android.R
 import com.picpay.desafio.util.Resource
-import kotlinx.android.synthetic.main.fragment_user_list.*
+import kotlinx.android.synthetic.main.fragment_contact_list.*
 
-class UserListFragment : Fragment(R.layout.fragment_user_list) {
+class ContactListFragment : Fragment(R.layout.fragment_contact_list) {
 
     lateinit var viewModel: ContactViewModel
     lateinit var contactAdapter: ContactAdapter
@@ -21,7 +21,7 @@ class UserListFragment : Fragment(R.layout.fragment_user_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as UsersActivity).viewModel
+        viewModel = (activity as ContactListActivity).viewModel
         setupRecyclerView()
 
         contactAdapter.setOnItemClickListener {
@@ -51,16 +51,16 @@ class UserListFragment : Fragment(R.layout.fragment_user_list) {
     }
 
     private fun hideProgressBar() {
-        progress_bar_user_list_fragment.visibility = View.INVISIBLE
+        progress_bar_contact_list_fragment.visibility = View.INVISIBLE
     }
 
     private fun showProgressBar() {
-        progress_bar_user_list_fragment.visibility = View.VISIBLE
+        progress_bar_contact_list_fragment.visibility = View.VISIBLE
     }
 
     private fun setupRecyclerView() {
         contactAdapter = ContactAdapter()
-        recycler_view_user_list_fragment.apply {
+        recycler_view_contact_list_fragment.apply {
             adapter = contactAdapter
             layoutManager = LinearLayoutManager(activity)
         }

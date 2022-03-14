@@ -9,24 +9,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.picpay.desafio.adapters.ContactAdapter
 import com.picpay.desafio.android.R
-import kotlinx.android.synthetic.main.fragment_favorite_user.*
-import java.util.Observer
+import kotlinx.android.synthetic.main.fragment_favorite_contact.*
 
-class FavoriteUserFragment : Fragment(R.layout.fragment_favorite_user) {
+class FavoriteContactFragment : Fragment(R.layout.fragment_favorite_contact) {
 
     lateinit var viewModel: ContactViewModel
     lateinit var contactAdapter: ContactAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as UsersActivity).viewModel
+        viewModel = (activity as ContactListActivity).viewModel
 
         setupRecyclerView()
 
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-        ){
+        ) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -40,7 +39,7 @@ class FavoriteUserFragment : Fragment(R.layout.fragment_favorite_user) {
                 val contact = contactAdapter.differ.currentList[position]
                 viewModel.deleteContact(contact)
                 Snackbar.make(view, "great morty", Snackbar.LENGTH_LONG).apply {
-                    setAction("undo"){
+                    setAction("undo") {
                         viewModel.saveContact(contact)
                     }
                     show()
@@ -49,17 +48,18 @@ class FavoriteUserFragment : Fragment(R.layout.fragment_favorite_user) {
         }
 
         ItemTouchHelper(itemTouchHelperCallback).apply {
-            attachToRecyclerView(recycler_view_favorite_user_fragment)
+            attachToRecyclerView(recycler_view_favorite_contact_fragment)
         }
 
-        viewModel.getFavoriteContact().observe(viewLifecycleOwner, androidx.lifecycle.Observer {contacts ->
-            contactAdapter.differ.submitList(contacts)
-        })
+        viewModel.getFavoriteContact()
+            .observe(viewLifecycleOwner, androidx.lifecycle.Observer { contacts ->
+                contactAdapter.differ.submitList(contacts)
+            })
     }
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
         contactAdapter = ContactAdapter()
-        recycler_view_favorite_user_fragment.apply {
+        recycler_view_favorite_contact_fragment.apply {
             adapter = contactAdapter
             layoutManager = LinearLayoutManager(activity)
         }

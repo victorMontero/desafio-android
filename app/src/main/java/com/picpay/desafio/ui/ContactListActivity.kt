@@ -8,16 +8,16 @@ import androidx.navigation.ui.setupWithNavController
 import com.picpay.desafio.android.R
 import com.picpay.desafio.db.ContactDatabase
 import com.picpay.desafio.repository.ContactRepository
-import kotlinx.android.synthetic.main.activity_users.*
+import kotlinx.android.synthetic.main.activity_contacts.*
 
-class UsersActivity : AppCompatActivity() {
+class ContactListActivity : AppCompatActivity() {
 
     lateinit var viewModel: ContactViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_users)
+        setContentView(R.layout.activity_contacts)
 
         val repository = ContactRepository(ContactDatabase(this))
         val viewModelProviderFactory = ContactViewModelProviderFactory(application, repository)

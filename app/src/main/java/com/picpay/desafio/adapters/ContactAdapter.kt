@@ -7,10 +7,9 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.android.material.snackbar.Snackbar
 import com.picpay.desafio.android.R
 import com.picpay.desafio.models.Contact
-import kotlinx.android.synthetic.main.list_item_user.view.*
+import kotlinx.android.synthetic.main.list_item_contact.view.*
 
 class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
@@ -32,7 +31,7 @@ class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         return ContactViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.list_item_user,
+                R.layout.list_item_contact,
                 parent,
                 false
             )
@@ -59,9 +58,9 @@ class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() 
         }
     }
 
-    private var onItemClickListener : ((Contact) -> Unit)? = null
+    private var onItemClickListener: ((Contact) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (Contact) -> Unit){
+    fun setOnItemClickListener(listener: (Contact) -> Unit) {
         onItemClickListener = listener
     }
 

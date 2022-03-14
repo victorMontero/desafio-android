@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/users_nav_graph.xml"
-    app:startDestination="@id/user_list_fragment">
+    android:id="@+id/contacts_nav_graph.xml"
+    app:startDestination="@id/contact_list_fragment">
 
     <fragment
-        android:id="@+id/user_list_fragment"
-        android:name="com.picpay.desafio.ui.UserListFragment"
-        android:label="UserListFragment" >
+        android:id="@+id/contact_list_fragment"
+        android:name="com.picpay.desafio.ui.ContactListFragment"
+        android:label="ContactListFragment">
         <action
-            android:id="@+id/action_userListFragment_to_savedUserFragment"
+            android:id="@+id/action_contactListFragment_to_savedContactFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
         <action
-            android:id="@+id/action_userListFragment_to_savedUserFragment2"
-            app:destination="@id/favorite_user_fragment" />
+            android:id="@+id/action_contactrListFragment_to_savedContactFragment2"
+            app:destination="@id/favorite_contact_fragment" />
     </fragment>
     <fragment
-        android:id="@+id/favorite_user_fragment"
-        android:name="com.picpay.desafio.ui.FavoriteUserFragment"
-        android:label="SavedUserFragment" />
+        android:id="@+id/favorite_contact_fragment"
+        android:name="com.picpay.desafio.ui.FavoriteContactFragment"
+        android:label="SavedContactFragment" />
 </navigation>
