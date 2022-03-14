@@ -7,57 +7,91 @@
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/contact_image"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_contact_card_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:elevation="2dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_round_account_circle" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/contact_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/contact_name"
-        app:layout_constraintStart_toEndOf="@+id/contact_image"
-        app:layout_constraintTop_toTopOf="@+id/contact_image"
-        tools:text="\@username" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
 
-    <TextView
-        android:id="@+id/contact_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:textColor="@color/colorDetail"
-        app:layout_constraintBottom_toBottomOf="@+id/contact_image"
-        app:layout_constraintStart_toStartOf="@+id/contact_username"
-        app:layout_constraintTop_toBottomOf="@+id/contact_username"
-        tools:text="Name Surname" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/contact_image"
-        app:layout_constraintEnd_toEndOf="@+id/contact_image"
-        app:layout_constraintStart_toStartOf="@+id/contact_image"
-        app:layout_constraintTop_toTopOf="@+id/contact_image" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/contact_image"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_round_account_circle" />
+
+            <TextView
+                android:id="@+id/contact_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toTopOf="@+id/contact_name"
+                app:layout_constraintStart_toEndOf="@+id/contact_image"
+                app:layout_constraintTop_toTopOf="@+id/contact_image"
+                tools:text="\@username" />
+
+            <TextView
+                android:id="@+id/contact_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/colorDetail"
+                app:layout_constraintBottom_toBottomOf="@+id/contact_image"
+                app:layout_constraintStart_toStartOf="@+id/contact_username"
+                app:layout_constraintTop_toBottomOf="@+id/contact_username"
+                tools:text="Name Surname" />
+
+
+            <View
+                android:id="@+id/item_view"
+                android:layout_width="0dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contact_image" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/contact_image"
+                app:layout_constraintEnd_toEndOf="@+id/contact_image"
+                app:layout_constraintStart_toStartOf="@+id/contact_image"
+                app:layout_constraintTop_toTopOf="@+id/contact_image" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

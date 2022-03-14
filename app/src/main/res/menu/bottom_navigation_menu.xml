@@ -4,12 +4,10 @@
     <item
         android:id="@+id/user_list_fragment"
         android:icon="@drawable/ic_round_account_circle"
-        android:iconTint="@color/colorAccent"
-        android:title="Contatos" />
+        android:title="Contatos"/>
 
     <item
         android:id="@+id/favorite_user_fragment"
-        android:icon="@drawable/ic_round_account_circle"
-        android:iconTint="@color/colorAccent"
+        android:icon="@drawable/ic_favorites_white"
         android:title="Favoritos" />
 </menu>
