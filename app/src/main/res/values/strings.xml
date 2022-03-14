@@ -2,5 +2,10 @@
     <string name="app_name">PicPay</string>
     <string name="title">Contatos</string>
     <string name="error">Ocorreu um erro. Tente novamente.</string>
+    <string name="undo">Desfazer</string>
+    <string name="snackbar_favorites_remove">foi removido dos Favoritos</string>
+    <string name="snackbar_favorites_add">foi adicionado aos Favoritos</string>
+    <string name="contacts">Contatos</string>
+    <string name="favorites">Favoritos</string>
 
 </resources>

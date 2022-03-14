@@ -38,8 +38,8 @@ class FavoriteContactFragment : Fragment(R.layout.fragment_favorite_contact) {
                 val position = viewHolder.adapterPosition
                 val contact = contactAdapter.differ.currentList[position]
                 viewModel.deleteContact(contact)
-                Snackbar.make(view, "great morty", Snackbar.LENGTH_LONG).apply {
-                    setAction("undo") {
+                Snackbar.make(view, "${contact.username} ${getString(R.string.snackbar_favorites_remove)}", Snackbar.LENGTH_LONG).apply {
+                    setAction(getString(R.string.undo)) {
                         viewModel.saveContact(contact)
                     }
                     show()

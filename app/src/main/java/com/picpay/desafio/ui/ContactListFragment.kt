@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.picpay.desafio.adapters.ContactAdapter
 import com.picpay.desafio.android.R
+import com.picpay.desafio.util.Constants.Companion.TAG
 import com.picpay.desafio.util.Resource
 import kotlinx.android.synthetic.main.fragment_contact_list.*
 
@@ -17,16 +18,19 @@ class ContactListFragment : Fragment(R.layout.fragment_contact_list) {
     lateinit var viewModel: ContactViewModel
     lateinit var contactAdapter: ContactAdapter
 
-    val TAG = "contactListFragment"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as ContactListActivity).viewModel
         setupRecyclerView()
 
-        contactAdapter.setOnItemClickListener {
-            viewModel.saveContact(it)
-            Snackbar.make(view, "episode saved by ricky", Snackbar.LENGTH_SHORT).show()
+        contactAdapter.setOnItemClickListener {contact ->
+            viewModel.saveContact(contact)
+            Snackbar.make(view, "${contact.username} ${getString(R.string.snackbar_favorites_add)}", Snackbar.LENGTH_SHORT).apply {
+                setAction(getString(R.string.undo)){
+                    viewModel.deleteContact(contact)
+                }
+            }.show()
         }
 
         viewModel.contacts.observe(viewLifecycleOwner, Observer { response ->
@@ -40,7 +44,7 @@ class ContactListFragment : Fragment(R.layout.fragment_contact_list) {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let { message ->
-                        Log.e(TAG, "an error ocured: $message")
+                        Log.e(TAG, "${getString(R.string.error)} $message")
                     }
                 }
                 is Resource.Loading -> {
