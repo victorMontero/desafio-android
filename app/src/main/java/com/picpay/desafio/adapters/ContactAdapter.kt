@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.picpay.desafio.android.R
 import com.picpay.desafio.models.Contact
 import kotlinx.android.synthetic.main.list_item_user.view.*
@@ -38,17 +39,30 @@ class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() 
         )
     }
 
+
+    override fun getItemCount(): Int {
+        return differ.currentList.size
+    }
+
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val contact = differ.currentList[position]
         holder.itemView.apply {
             Glide.with(this).load(contact.img).into(contact_image)
             contact_name.text = contact.username
             contact_username.text = contact.name
+
+            setOnClickListener {
+                onItemClickListener?.let {
+                    it(contact)
+                }
+            }
         }
     }
 
-    override fun getItemCount(): Int {
-        return differ.currentList.size
+    private var onItemClickListener : ((Contact) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Contact) -> Unit){
+        onItemClickListener = listener
     }
 
 

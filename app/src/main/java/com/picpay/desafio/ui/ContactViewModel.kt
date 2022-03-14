@@ -3,8 +3,8 @@ package com.picpay.desafio.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.picpay.desafio.models.Contact
 import com.picpay.desafio.models.ContactListResponse
 import com.picpay.desafio.repository.ContactRepository
 import com.picpay.desafio.util.Resource
@@ -17,7 +17,6 @@ class ContactViewModel(
 ) : AndroidViewModel(app) {
 
     val contacts: MutableLiveData<Resource<ContactListResponse>> = MutableLiveData()
-    var contactListPage = 1
 
     init {
         getContactList()
@@ -36,5 +35,15 @@ class ContactViewModel(
             }
         }
         return Resource.Error(response.message())
+    }
+
+    fun saveContact(contact: Contact) = viewModelScope.launch {
+        contactRepository.insert(contact)
+    }
+
+    fun getFavoriteContact() = contactRepository.getFavoriteContacts()
+
+    fun deleteContact(contact: Contact) = viewModelScope.launch {
+        contactRepository.deleteContact(contact)
     }
 }

@@ -6,28 +6,34 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.picpay.desafio.adapters.ContactAdapter
 import com.picpay.desafio.android.R
 import com.picpay.desafio.util.Resource
 import kotlinx.android.synthetic.main.fragment_user_list.*
 
-class UserListFragment : Fragment(R.layout.fragment_user_list){
+class UserListFragment : Fragment(R.layout.fragment_user_list) {
 
     lateinit var viewModel: ContactViewModel
     lateinit var contactAdapter: ContactAdapter
 
-    val TAG = "contactlistFragment"
+    val TAG = "contactListFragment"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as UsersActivity).viewModel
         setupRecyclerView()
 
+        contactAdapter.setOnItemClickListener {
+            viewModel.saveContact(it)
+            Snackbar.make(view, "episode saved by ricky", Snackbar.LENGTH_SHORT).show()
+        }
+
         viewModel.contacts.observe(viewLifecycleOwner, Observer { response ->
-            when(response){
+            when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
-                    response.data?.let {contactListResponse ->
+                    response.data?.let { contactListResponse ->
                         contactAdapter.differ.submitList(contactListResponse)
                     }
                 }
@@ -37,11 +43,10 @@ class UserListFragment : Fragment(R.layout.fragment_user_list){
                         Log.e(TAG, "an error ocured: $message")
                     }
                 }
-                is Resource.Loading ->{
+                is Resource.Loading -> {
                     showProgressBar()
                 }
             }
-
         })
     }
 
@@ -53,7 +58,7 @@ class UserListFragment : Fragment(R.layout.fragment_user_list){
         progress_bar_user_list_fragment.visibility = View.VISIBLE
     }
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
         contactAdapter = ContactAdapter()
         recycler_view_user_list_fragment.apply {
             adapter = contactAdapter
