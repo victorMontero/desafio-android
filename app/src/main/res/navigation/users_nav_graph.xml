@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/contact_list_fragment"
-        android:name="com.picpay.desafio.ui.ContactListFragment"
+        android:name="com.picpay.desafio.ui.fragments.ContactListFragment"
         android:label="ContactListFragment">
         <action
             android:id="@+id/action_contactListFragment_to_savedContactFragment"
@@ -20,6 +20,6 @@
     </fragment>
     <fragment
         android:id="@+id/favorite_contact_fragment"
-        android:name="com.picpay.desafio.ui.FavoriteContactFragment"
+        android:name="com.picpay.desafio.ui.fragments.FavoriteContactFragment"
         android:label="SavedContactFragment" />
 </navigation>

@@ -8,6 +8,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.picpay.desafio.android.R
 import com.picpay.desafio.db.ContactDatabase
 import com.picpay.desafio.repository.ContactRepository
+import com.picpay.desafio.ui.viewmodel.ContactViewModel
+import com.picpay.desafio.ui.viewmodel.ContactViewModelProviderFactory
 import kotlinx.android.synthetic.main.activity_contacts.*
 
 class ContactListActivity : AppCompatActivity() {

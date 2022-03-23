@@ -1,4 +1,4 @@
-package com.picpay.desafio.ui
+package com.picpay.desafio.ui.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.picpay.desafio.adapters.ContactAdapter
 import com.picpay.desafio.android.R
+import com.picpay.desafio.ui.ContactListActivity
+import com.picpay.desafio.ui.viewmodel.ContactViewModel
 import com.picpay.desafio.util.Resource
 import kotlinx.android.synthetic.main.fragment_contact_list.*
 

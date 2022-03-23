@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="com.picpay.desafio.ui.FavoriteContactFragment">
+    tools:context="com.picpay.desafio.ui.fragments.FavoriteContactFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
